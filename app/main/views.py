@@ -3,7 +3,7 @@ from flask import render_template, request, redirect, url_for, abort
 from . import main
 from flask_login import login_required, current_user
 from ..models import User, Category, Pitches, Comments
-from .forms import UpdateProfile, CommentForm
+from .forms import UpdateProfile , CommentForm,PitchForm
 from .. import db, photos
 
 
@@ -11,7 +11,7 @@ from .. import db, photos
 def index():
     """View root page function that returns index page and the various news sources"""
 
-    title = 'Home- Welcome to the Pitch Website'
+    title = 'Pitch'
     categories = Category.get_categories()
     return render_template('index.html', title=title, categories=categories)
 

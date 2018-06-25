@@ -19,3 +19,9 @@ class ChallengeForm(FlaskForm):
 class CommentForm(FlaskForm):
     comment_id = TextAreaField('WRITE COMMENT')
     submit = SubmitField('SUBMIT')
+
+class PitchForm(FlaskForm): #create a class that inherits from FlaskForm class
+    name = StringField('Authors Name', validators = [Required()])
+    category = StringField('Pitch Category', validators=[Required()])
+    pitch = TextAreaField('Pitch', validators=[Required()])
+    submit = SubmitField('Submit')

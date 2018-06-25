@@ -1,4 +1,5 @@
 import os
+from flask import Flask
 
 class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://a:mango@localhost/pitch'
