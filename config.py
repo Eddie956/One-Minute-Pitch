@@ -9,7 +9,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
-    CRSF_SECRET_KEY = 'x17M\xeacL>|i\xfa\x91\xcey,\x159\x01\xca2\x8a\x8dl\xd9'
+    SECRET_KEY = 'ONEMINUTE90PITCHFORDIRECTION'
 
 class ProdConfig(Config):
     DEBUG = True

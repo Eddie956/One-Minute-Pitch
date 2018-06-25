@@ -1,3 +1,4 @@
 export MAIL_USERNAME=mutugieddie3@gmail.com
 export MAIL_PASSWORD=mangobanana123
+export SECRET_KEY=ONEMINUTE90PITCHFORDIRECTION
 python3 manage.py server
