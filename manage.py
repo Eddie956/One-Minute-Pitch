@@ -54,7 +54,7 @@ def test():
 
 @manager.shell
 def make_shell_context():
-    return dict(app=app, db=db, User=User, Comments=Comments, Category=Category, Pitches=Pitches)
+    return dict(app = app, db = db, User = User, Comments = Comments, Category = Category, Pitches = Pitches)
     pass
 
 
