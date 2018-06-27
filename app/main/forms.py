@@ -11,7 +11,7 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 
-class ChallengeForm(FlaskForm):
+class ContentForm(FlaskForm):
     content = TextAreaField('YOUR PITCH')
     submit = SubmitField('SUBMIT')
 
@@ -22,6 +22,6 @@ class CommentForm(FlaskForm):
 
 class PitchForm(FlaskForm): #create a class that inherits from FlaskForm class
     name = StringField('Authors Name', validators = [Required()])
-    category = StringField('Pitch Category', validators=[Required()])
+    category = StringField('Pitch', validators=[Required()])
     pitch = TextAreaField('Pitch', validators=[Required()])
     submit = SubmitField('Submit')

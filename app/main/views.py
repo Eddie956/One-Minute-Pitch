@@ -1,3 +1,4 @@
+
 from flask import render_template, request, redirect, url_for, abort
 from . import main
 from flask_login import login_required, current_user
@@ -18,13 +19,12 @@ def index():
 # Route for adding a new pitch
 
 @main.route('/category/pitch/new/<int:id>', methods=['GET', 'POST'])
-@login_required
 def new_pitch(id):
     '''
     Function to check Pitches form
     '''
     form = PitchForm()
-    category = PitchCategory.query.filter_by(id=id).first()
+    category = Category.query.filter_by(id=id).first()
 
     if category is None:
         abort(404)
@@ -132,8 +132,7 @@ def new_comment(id):
 
     if form.validate_on_submit():
         comment_id = form.comment_id.data
-        new_comment = Comments(comment_id=comment_id,
-                            user_id=current_user.id, pitches_id=pitches.id)
+        new_comment = Comments(comment_id=comment_id,user_id=current_user.id, pitches_id=pitches.id)
         new_comment.save_comment()
         return redirect(url_for('.category', id=pitches.category_id))
 
