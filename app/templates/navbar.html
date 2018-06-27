@@ -1,43 +1,5 @@
 {% extends 'base.html' %}
 {% block navbar%}
-<!-- <div class="container-fluid" style="background-color: grey">
-    <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#" style="color: black;">One Minute Pitch</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <form class="form-inline my-2 my-lg-0"style="color: black;margin-left: 50%;">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            {% if current_user.is_authenticated %}
-              <li class="nav-item" id="home">
-            <a class="nav-link" href="/" style="color: black;">Home</a>
-            </li>
-            <li class="nav-item" id="profile">
-                <a class="nav-link" href="{{url_for('main.profile',uname=current_user.username)}}" style="color: black;">Profile</a>
-            </li>
-            <li class="nav-item" id="sign-out">
-                <a class="nav-link" href="{{url_for('auth.logout')}}" style="color: black;">Sign out</a>
-            </li>
-            {% else %}
-            <li class="nav-item" id="sign-in">
-                <a class="nav-link" href="{{url_for('auth.login')}}"style="color: black;float: right;"> Login</a>
-            </li>
-            <li class="nav-item" id="sign-in">
-                <a class="nav-link" href="{{url_for('auth.register')}}"style="color: black;">Sign up</a>
-            </li>
-            {%endif%}
-            </ul>
-            
-        </div>   
-    </nav>
-  </div>
-</div>   
- -->
 
     {{ super()}}
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/styles.css')}}">
