@@ -1,4 +1,3 @@
-
 from flask import render_template, request, redirect, url_for, abort
 from . import main
 from flask_login import login_required, current_user
@@ -17,6 +16,24 @@ def index():
 
 
 # Route for adding a new pitch
+
+
+@main.route('/category/<int:id>')
+def category(id):
+    '''
+    category route function returns a list of pitches in the category chosen
+    '''
+
+    category = Category.query.get(id)
+
+    if category is None:
+        abort(404)
+
+    pitches = Pitches.get_pitches(id)
+    return render_template('category.html', category=category, pitches=pitches)
+
+
+
 
 @main.route('/category/pitch/new/<int:id>', methods=['GET', 'POST'])
 def new_pitch(id):
@@ -39,21 +56,6 @@ def new_pitch(id):
     return render_template('new_pitch.html', pitch_form=form, category=category)
 
 # Routes for displaying the different pitches
-
-
-@main.route('/category/<int:id>')
-def category(id):
-    '''
-    category route function returns a list of pitches in the category chosen
-    '''
-
-    category = Category.query.get(id)
-
-    if category is None:
-        abort(404)
-
-    pitches = Pitches.get_pitches(id)
-    return render_template('category.html', category=category, pitches=pitches)
 
 
 @main.route('/pitch/<int:id>', methods=['GET', 'POST'])
