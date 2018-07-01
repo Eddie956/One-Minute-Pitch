@@ -19,7 +19,7 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    pass_secure = db.Column(db.String(255))
+    pass_harsh = db.Column(db.String(255))
     pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
     comment = db.relationship("Comments", backref="user", lazy="dynamic")
 
@@ -29,11 +29,11 @@ class User(UserMixin,db.Model):
 
     @password.setter
     def password(self, password):
-        self.pass_secure = generate_password_hash(password)
+        self.pass_harsh = generate_password_hash(password)
 
 
     def verify_password(self,password):
-        return check_password_hash(self.pass_secure,password)
+        return check_password_hash(self.pass_harsh,password)
 
     def save_user(self):
         db.session.add(self)
