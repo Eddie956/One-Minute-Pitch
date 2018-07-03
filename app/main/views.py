@@ -11,8 +11,8 @@ def index():
     """View root page function that returns index page and the various news sources"""
 
     title = 'Pitch'
-    categories = Category.get_categories()
-    return render_template('index.html', title=title, categories=categories)
+    
+    return render_template('index.html', title=title)
 
 
 # Route for adding a new pitch
@@ -35,30 +35,35 @@ def category(id):
 
 
 
-@main.route('/category/pitch/new/<int:id>', methods=['GET', 'POST'])
-def new_pitch(id):
+@main.route('/category/pitch/new/', methods=['GET', 'POST'])
+def new_pitch():
     '''
     Function to check Pitches form
     '''
     form = PitchForm()
-    category = Category.query.filter_by(id=id).first()
+       #  category = Category.query.filter_by(id=id).first()
 
-    if category is None:
-        abort(404)
+       #  if category is None:
+       #      abort(404)
+       # actual_pitch = db.Column(db.String)
+       #  date_posted = db.Column(db.DateTime, default=datetime.now)
+       #  user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+       #  category_id = db.Column(db.Integer, db.ForeignKey("category.id"))
+       #  comment = db.relationship("Comments", backref="pitches", lazy="dynamic")
 
     if form.validate_on_submit():
-        actual_pitch = form.content.data
+        actual_pitch = form.pitch.data
         new_pitch = Pitches(actual_pitch=actual_pitch,
-                            user_id=current_user.id, category_id=category.id)
+                            user_id=current_user.id,comment=comment)
         new_pitch.save_pitch()
-        return redirect(url_for('.category', id=category.id))
+        return redirect(url_for('main.new_pitch'))
+    pitches = Pitches.query.all()
 
-    return render_template('new_pitch.html', pitch_form=form, category=category)
+    return render_template('new_pitch.html', pitch_form=form, category=category, pitches = pitches)
 
 # Routes for displaying the different pitches
 
-
-@main.route('/pitch/<int:id>', methods=['GET', 'POST'])
+@main.route('/pitch/<pitch_id>', methods=['GET', 'POST'])
 @login_required
 def single_pitch(id):
     '''
@@ -120,7 +125,7 @@ def update_pic(uname):
 # Route to add commments.
 
 
-@main.route('/pitch/new/<int:id>', methods=['GET', 'POST'])
+@main.route('/pitch/new/<comment_id>', methods=['GET', 'POST'])
 @login_required
 def new_comment(id):
     '''

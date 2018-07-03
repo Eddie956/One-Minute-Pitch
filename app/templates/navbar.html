@@ -12,7 +12,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <div class="col-md-4">
         <li class="nav-item" id="home" style="list-style-type: none;">
-        <a class="nav-link" href="#home" style="color: black; font-family: 'Great Vibes', cursive; font-size: 4em; margin-right: 60%;">Home</a>
+        <a class="nav-link" href="{{url_for('main.index')}}" style="color: black; font-family: 'Great Vibes', cursive; font-size: 4em; margin-right: 60%;">Home</a>
         </li>
       </div>
       <div class="col-md-4">
@@ -21,12 +21,12 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"style="color: black; font-family: 'Great Vibes', cursive; font-size: 4em;">Categories></a>
               <ul class="dropdown-menu multi-level" role="menu">
-                <li><a href="#positive">Positive</a></li>
-                <li><a href="#inspiration">Inspiration</a></li>
-                <li><a href="#life">Life</a></li>
-                <li><a href="#nature">Nature</a></li>
-                <li><a href="#frienship">Frienship</a></li>
-                <li><a href="#family">family</a></li>
+                <li><a href="#">Positive</a></li>
+                <li><a href="#">Inspiration</a></li>
+                <li><a href="#">Life</a></li>
+                <li><a href="#">Nature</a></li>
+                <li><a href="#">Frienship</a></li>
+                <li><a href="#">family</a></li>
               </ul>
             </li>
         </ul>
@@ -37,8 +37,10 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: black; font-family: 'Great Vibes', cursive; font-size: 4em;">More</a>
                 <ul class="dropdown-menu">
                 {% if current_user.is_authenticated %}
-  
-                 
+                  
+                 <li class="nav-item" id="sign-out" style="list-style-type: none;">
+                      <a class="nav-link" href="{{url_for('auth.logout')}}" style="color: black;">Sign out</a>
+                  </li>
                   {% else %}
                   <li class="nav-item" id="sign-in">
                       <a class="nav-link" href="{{url_for('auth.login')}}"style="color: black; float: right; list-style-type: none;"> Login</a>
@@ -47,9 +49,8 @@
                   <li class="nav-item" id="sign-in">
                       <a class="nav-link" href="{{url_for('auth.register')}}"style="color: black; float: right; list-style-type: none; padding-right: 15px;">Sign up</a>
                   </li>
-                   <li class="nav-item" id="sign-out" style="list-style-type: none;">
-                      <a class="nav-link" href="{{url_for('auth.logout')}}" style="color: black;">Sign out</a>
-                  </li>
+                   
+                 
                 </ul>
                 {%endif%}
               </li>

@@ -13,10 +13,12 @@
                 {% else %}
                     <img src="{{url_for('static',filename = 'photos/avatar.png')}}" alt="" class="img-thumbnail">
                 {% endif %}
-                <a href="/user/{{pitch.user.username}}&{{pitch.user.id}}">{{pitch.user.username|capitalize}}</a> 
+            {% for pitch in pitches %}
+                <h3 class="card-title">{{ pitch.user.username }}</h3>
             </h4>
-            <p class="pitch-content">{{pitch.pitch_content}}</p>
+            <p class="pitch-content">{{pitch.actual_pitch}}</p>
             <hr>
+            {% endfor %}
             {{wtf.quick_form(comment_form)}}
             
             <ul class="list-inline">
