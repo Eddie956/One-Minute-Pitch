@@ -12,6 +12,10 @@ class Config:
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     SECRET_KEY = 'ONEMINUTE90PITCHFORDIRECTION'
 
+    @staticmethod
+    def init_app(app):
+        pass
+
 class ProdConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
