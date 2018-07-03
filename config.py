@@ -2,7 +2,7 @@ import os
 from flask import Flask
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://a:mango@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://a:mango@localhost/pitches'
     UPLOADED_PHOTOS_DEST ='app/static/images'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -17,11 +17,12 @@ class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://a:mango@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://a:mango@localhost/pitches'
     DEBUG = True
 
 class TestConfig(Config):
     pass
+    
 config_options = {
     'development': DevConfig,
     'production': ProdConfig,
